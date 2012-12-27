@@ -1,0 +1,28 @@
+<h1>Listing pile_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Station</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pile_groups.each do |pile_group| %>
+  <tr>
+    <td><%= pile_group.Name %></td>
+    <td><% if(pile_group.station) %> 
+                          <%= pile_group.station.name %>  
+                      <% end %></td>
+    <td><%= link_to 'Show', pile_group %></td>
+    <td><%= link_to 'Edit', edit_pile_group_path(pile_group) %></td>
+    <td><%= link_to 'Destroy', pile_group, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pile group', new_pile_group_path %>
+<%= link_to "Back", root_path %>

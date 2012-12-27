@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Itemdid:</b>
+  <%= @pile.ItemdId %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @pile.Amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_pile_path(@pile) %> |
+<%= link_to 'Back', piles_path %>

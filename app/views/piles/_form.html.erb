@@ -1,0 +1,25 @@
+<%= form_for(@pile) do |f| %>
+  <% if @pile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pile.errors.count, "error") %> prohibited this pile from being saved:</h2>
+
+      <ul>
+      <% @pile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ItemdId %><br />
+    <%= f.text_field :ItemdId %>
+  </div>
+  <div class="field">
+    <%= f.label :Amount %><br />
+    <%= f.text_field :Amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

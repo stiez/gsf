@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @pile_group.Name %>
+</p>
+
+<p>
+  <b>Station:</b>
+  ID: <%= @pile_group.station_id %>  Name: <% if(@pile_group.station) %> 
+  												<%= @pile_group.station.name %>  
+											<% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_pile_group_path(@pile_group) %> |
+<%= link_to 'Back', pile_groups_path %>

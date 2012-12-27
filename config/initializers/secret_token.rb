@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-CorpTools::Application.config.secret_token = 'a9c96a48ffa2d1a7359f7790584f5ee295b2b0afef29d3856506888a5cd286d3803799fa68d9367f94402b28ada74252d7420fd528feb7c6dfb2d30bd557c95b'
+CorpTools::Application.config.secret_token = 'ce07c1ea8c0a443dde2c4447027b03694a121d5d3def3976389162fbf2bbd6ee2b5ef3c410737fc1d79d191f23f0e8021ccd4683cb1cdd2a7b20897211fd62fb'
