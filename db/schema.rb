@@ -11,21 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226201154) do
+ActiveRecord::Schema.define(:version => 20121227220843) do
+
+  create_table "categories", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pile_groups", :force => true do |t|
     t.string   "Name"
-    t.integer  "StationId"
+    t.integer  "station_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "piles", :force => true do |t|
-    t.integer  "ItemdId"
+    t.integer  "item_id"
     t.integer  "Amount"
-    t.integer  "PileGroup_id"
+    t.integer  "pile_group_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "stations", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "types", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

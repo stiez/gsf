@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore the databse yml file
+database.yml
+
+#Ignore the API Key
+api.rb

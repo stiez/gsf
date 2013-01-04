@@ -8,10 +8,21 @@
 <p>
   <b>Station:</b>
   ID: <%= @pile_group.station_id %>  Name: <% if(@pile_group.station) %> 
-  												<%= @pile_group.station.name %>  
+  												<%= @pile_group.station.name %>
+                                            <% else %>
+                                                <%= ConquerableStation.GetStation(@pile_group.station_id).stationName %>
 											<% end %>
 </p>
 
+<p>
+  <b>Piles:</b>
+  <% @pile_group.piles.each do |pile| %>
+    Name:<% if(pile.type) %>
+          <%= pile.type.name %>
+        <% end %>
+      Amount: <%= pile.Amount %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_pile_group_path(@pile_group) %> |
 <%= link_to 'Back', pile_groups_path %>

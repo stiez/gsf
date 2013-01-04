@@ -15,7 +15,7 @@
     <%= f.label :Name %><br />
     <%= f.text_field :Name %>
   </div>
-  <p><%= collection_select(:pile_group, :station_id, Station.all, :stationID, :name) %></p>
+  <p><%= collection_select(:pile_group, :station_id, @corpStations.sort{ |first, second| first[1] <=> second[1]}, :first, :last) %></p>
   <div class="actions">
     <%= f.submit %>
   </div>

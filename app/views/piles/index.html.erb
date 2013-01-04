@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Itemdid</th>
+    <th>Item</th>
     <th>Amount</th>
     <th></th>
     <th></th>
@@ -11,7 +11,11 @@
 
 <% @piles.each do |pile| %>
   <tr>
-    <td><%= pile.ItemdId %></td>
+    <td>
+      <% if(pile.type) %>
+          <%= pile.type.name %>
+      <% end %>
+    </td>
     <td><%= pile.Amount %></td>
     <td><%= link_to 'Show', pile %></td>
     <td><%= link_to 'Edit', edit_pile_path(pile) %></td>

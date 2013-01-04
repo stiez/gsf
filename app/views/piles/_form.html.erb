@@ -1,3 +1,35 @@
+<script type="text/javascript">
+    $(function() {
+        // Below is the name of the textfield that will be autocomplete
+        $('#select_type').autocomplete({
+            // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
+            minLength: 2,
+            // This is the source of the auocomplete suggestions. In this case a list of names from the people controller, in JSON format.
+            source: '<%= types_path(:json) %>',
+            // This updates the textfield when you move the updown the suggestions list, with your keyboard. In our case it will reflect the same value that you see in the suggestions which is the person.given_name.
+            focus: function(event, ui) {
+                $('#select_type').val(ui.item.label);
+                return false;
+            },
+            // Once a value in the drop down list is selected, do the following:
+            select: function(event, ui) {
+                // place the person.given_name value into the textfield called 'select_origin'...
+                $('#select_type').val(ui.item.label);
+                // and place the person.id into the hidden textfield called 'link_origin_id'.
+                $('#select_type_id').val(ui.item.value);
+                return false;
+            }        })
+            // The below code is straight from the jQuery example. It formats what data is displayed in the dropdown box, and can be customized.
+                .data( "autocomplete" )._renderItem = function( ul, item ) {
+                     return $( "<li></li>" )
+                    .data( "item.autocomplete", item )
+                    // For now which just want to show the person.given_name in the list.
+                    .append( "<a>" + item.label + "</a>" )
+                    .appendTo( ul );
+        };
+    });
+</script>
+
 <%= form_for(@pile) do |f| %>
   <% if @pile.errors.any? %>
     <div id="error_explanation">
@@ -11,14 +43,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :ItemdId %><br />
-    <%= f.text_field :ItemdId %>
-  </div>
+  <p>
+    <input id="select_type"/>
+    <input id="select_type_id" name="pile[item_id]" type="hidden"/>
+  </p>
   <div class="field">
     <%= f.label :Amount %><br />
     <%= f.text_field :Amount %>
   </div>
+  <p><%= collection_select(:pile, :pile_group_id, PileGroup.all, :id, :Name) %></p>
   <div class="actions">
     <%= f.submit %>
   </div>

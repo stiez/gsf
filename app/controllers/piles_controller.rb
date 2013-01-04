@@ -25,6 +25,11 @@ class PilesController < ApplicationController
   # GET /piles/new.json
   def new
     @pile = Pile.new
+    types = Type.joins(:group => :category).where("invCategories.published = 1 AND invCategories.categoryID <> 2 AND invCategories.categoryID <> 46")
+      #[ { label: "Choice1", value: "value1" }, ... ]
+    @types = "["
+    @types << types.collect{ |type| "{ value: %s, label: \"%s\" }" % [type.typeID, type.name] }.join(", ")
+    @types <<  "]".html_safe
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +40,8 @@ class PilesController < ApplicationController
   # GET /piles/1/edit
   def edit
     @pile = Pile.find(params[:id])
+    #@types = Type.joins(:group => :category).where(:category => {:published => true && :categoryID <= 2 && :categoryID != 46})
+    @types = Type.joins(:group => :category).where("invCategories.published = 1 AND invCategories.categoryID <> 2 AND invCategories.categoryID <> 46")
   end
 
   # POST /piles

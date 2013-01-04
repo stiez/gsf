@@ -3,6 +3,9 @@ CorpTools::Application.routes.draw do
   resources :piles
   resources :stations
   resources :types
+  resources :groups
+  resources :types
+  resources :categorys
 
   get "welcome/index"
 
